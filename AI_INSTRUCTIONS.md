@@ -16,6 +16,8 @@
 - 変更レポートテンプレート: `docs/change-report-template.md`
 - プロジェクト目的・設計思想の要約: `docs/project-intent.md`
 
+ソースコード作成・レビュー時は、上記の規約・設計思想との整合を必ず確認する。
+
 ## 優先順位（衝突時）
 `rust-coding-rules`（安全・エラー） > `ai-architecture-rules`（設計・運用） > 実装の都合
 
