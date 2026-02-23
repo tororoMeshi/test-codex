@@ -14,6 +14,7 @@
 - Rustコーディング規約（安全・エラーハンドリング）: `docs/rust-coding-rules.md`
 - 設計・運用・YAGNI・テスト戦略（AI生成規約）: `docs/ai-architecture-rules.md`
 - 変更レポートテンプレート: `docs/change-report-template.md`
+- プロジェクト目的・設計思想の要約: `docs/project-intent.md`
 
 ## 優先順位（衝突時）
 `rust-coding-rules`（安全・エラー） > `ai-architecture-rules`（設計・運用） > 実装の都合
