@@ -7,6 +7,8 @@ common_required_files=(
   "README.md"
   "AGENTS.md"
   "AI_INSTRUCTIONS.md"
+  ".github/workflows/template-check.yml"
+  "scripts/check-template.sh"
   "docs/project-intent.md"
   "docs/ai-architecture-rules.md"
   "docs/rust-coding-rules.md"
@@ -14,10 +16,9 @@ common_required_files=(
 )
 
 template_required_files=(
-  ".github/workflows/template-check.yml"
-  "scripts/check-template.sh"
   "docs/template-checklist.md"
   "docs/template-structure.md"
+  "scripts/smoke-test-generated.sh"
 )
 
 required_dirs=(
@@ -74,6 +75,7 @@ case "$mode" in
     generated_forbidden_files=(
       "docs/template-checklist.md"
       "docs/template-structure.md"
+      "scripts/smoke-test-generated.sh"
     )
 
     for file in "${generated_forbidden_files[@]}"; do

@@ -41,3 +41,7 @@ jobs:
 
       - name: Run template check
         run: bash scripts/check-template.sh "$CHECK_MODE"
+
+      - name: Run generated check smoke test
+        if: env.CHECK_MODE == 'template'
+        run: bash scripts/smoke-test-generated.sh
