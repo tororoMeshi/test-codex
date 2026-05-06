@@ -1,6 +1,7 @@
 # テンプレート構成
 
 最小構成（必須）:
+- `AGENTS.md`
 - `AI_INSTRUCTIONS.md`
 - `docs/ai-architecture-rules.md`
 - `docs/rust-coding-rules.md`

@@ -17,5 +17,6 @@
 - The Twelve-Factor App は「参考思想」として設計判断の補助に使う
 
 ## AI 参照導線
-- 入口: `AI_INSTRUCTIONS.md`
+- 自動参照用の入口: `AGENTS.md`
+- 共通ルールの実体: `AI_INSTRUCTIONS.md`
 - 詳細: `docs/ai-architecture-rules.md`, `docs/rust-coding-rules.md`

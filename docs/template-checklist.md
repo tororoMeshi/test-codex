@@ -1,11 +1,16 @@
 # テンプレート利用チェックリスト
 
 ## 必須
-- `AI_INSTRUCTIONS.md` が存在し、入口として参照されている
+- `AGENTS.md` が存在し、`AI_INSTRUCTIONS.md` へ誘導している
+- `AI_INSTRUCTIONS.md` が存在し、共通ルールの実体として参照されている
 - `docs/ai-architecture-rules.md` が存在する
 - `docs/rust-coding-rules.md` が存在する
 - `docs/change-report-template.md` が存在する
 - `docs/reports/` が存在する
+
+## テンプレート生成後
+- [ ] README.md の `<project-name>` を実プロジェクト名に変更した
+- [ ] 派生プロジェクトとして公開する場合、LICENSE の著作権者を必要に応じて変更した
 
 ## 推奨
 - `README.md` にテンプレート利用の要点が記載されている
