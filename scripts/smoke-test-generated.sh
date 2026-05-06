@@ -5,13 +5,23 @@ tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
 repo_root="$(git rev-parse --show-toplevel)"
 
+copy_tracked_worktree() {
+  local project_dir="$1"
+
+  (
+    cd "$repo_root"
+    git ls-files -z | tar --null --ignore-failed-read -T - -cf -
+  ) | tar -xf - -C "$project_dir"
+}
+
 prepare_generated_project() {
   local project_dir="$1"
 
   mkdir -p "$project_dir"
 
-  # Use committed files only so local untracked files do not affect smoke tests.
-  git -C "$repo_root" archive --format=tar HEAD | tar -x -C "$project_dir"
+  # Copy tracked worktree files so local edits are tested without mixing in
+  # untracked files such as build output or editor scratch files.
+  copy_tracked_worktree "$project_dir"
 
   rm -f "$project_dir/docs/template-checklist.md"
   rm -f "$project_dir/docs/template-structure.md"
