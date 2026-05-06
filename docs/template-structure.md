@@ -12,3 +12,5 @@
 - `README.md`
 - `CONTRIBUTING.md`
 - `docs/template-checklist.md`
+- `scripts/check-template.sh`
+- `.github/workflows/template-check.yml`

@@ -9,8 +9,13 @@
 - `docs/reports/` が存在する
 
 ## テンプレート生成後
-- [ ] README.md の `<project-name>` を実プロジェクト名に変更した
+- [ ] README.md を実プロジェクトの説明に差し替えた
+- [ ] README.md にテンプレート本体向けの説明が残っていない
+- [ ] README.md に危険なプレースホルダー（例: `<project-name>`）が残っていない
 - [ ] 派生プロジェクトとして公開する場合、LICENSE の著作権者を必要に応じて変更した
+
+## 自動チェック
+- [ ] `scripts/check-template.sh` が成功する
 
 ## 推奨
 - `README.md` にテンプレート利用の要点が記載されている

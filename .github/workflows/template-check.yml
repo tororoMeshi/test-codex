@@ -1,0 +1,15 @@
+name: Template Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  template-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run template check
+        run: bash scripts/check-template.sh
