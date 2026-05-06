@@ -3,25 +3,46 @@ set -euo pipefail
 
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
+repo_root="$(pwd)"
 
-cp -a . "$tmpdir/project"
-cd "$tmpdir/project"
+prepare_generated_project() {
+  local project_dir="$1"
 
-rm -f docs/template-checklist.md
-rm -f docs/template-structure.md
-rm -f scripts/smoke-test-generated.sh
-rm -f docs/reports/*.md
+  cp -a "$repo_root/." "$project_dir"
 
-cat > README.md <<'EOF'
+  rm -f "$project_dir/docs/template-checklist.md"
+  rm -f "$project_dir/docs/template-structure.md"
+  rm -f "$project_dir/scripts/smoke-test-generated.sh"
+  rm -f "$project_dir"/docs/reports/*.md
+
+  cat > "$project_dir/CONTRIBUTING.md" <<'EOF'
+# Contributing
+
+このプロジェクトの変更方針を記載します。
+EOF
+}
+
+success_project="$tmpdir/success-project"
+prepare_generated_project "$success_project"
+
+cat > "$success_project/README.md" <<'EOF'
 # Sample Generated Project
 
 This is a generated project used for template check smoke testing.
 EOF
 
-cat > CONTRIBUTING.md <<'EOF'
-# Contributing
+(cd "$success_project" && bash scripts/check-template.sh generated)
 
-このプロジェクトの変更方針を記載します。
+failure_project="$tmpdir/failure-project"
+prepare_generated_project "$failure_project"
+
+cat > "$failure_project/README.md" <<'EOF'
+# Sample Generated Project
+
+GitHub Template から生成したプロジェクトです
 EOF
 
-bash scripts/check-template.sh generated
+if (cd "$failure_project" && bash scripts/check-template.sh generated); then
+  echo "generated check should fail when old generated README text remains"
+  exit 1
+fi

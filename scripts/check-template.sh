@@ -66,7 +66,8 @@ fi
 
 case "$mode" in
   template)
-    if grep -q "GitHub Template から生成したプロジェクトです" README.md; then
+    old_generated_readme_text="GitHub Template ""から生成したプロジェクトです"
+    if grep -q "$old_generated_readme_text" README.md; then
       echo "README.md still describes this repository as a generated project"
       exit 1
     fi
@@ -92,6 +93,7 @@ case "$mode" in
 
     generated_forbidden_patterns=(
       "AI Coding Project ""Template"
+      "GitHub Template ""から生成したプロジェクトです"
       "GitHub Template ""として利用する前提"
       "GitHub Template ""です"
       "テンプレート""本体"
