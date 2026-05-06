@@ -19,7 +19,7 @@
 - [ ] `docs/template-checklist.md` を削除した
 - [ ] `docs/template-structure.md` を削除した
 - [ ] 実プロジェクト用に同種の文書が必要な場合は、`docs/project-checklist.md` や `docs/project-structure.md` など別名で作成した
-- [ ] テンプレート由来の `docs/reports/*.md` を削除し、`docs/reports/` 自体は残した
+- [ ] テンプレート由来の `docs/reports/template-*.md` または `docs/reports/*_template-*.md` を削除し、`docs/reports/` 自体は残した
 - [ ] 派生プロジェクトとして公開する場合、LICENSE の著作権者を必要に応じて変更した
 
 ## 自動チェック

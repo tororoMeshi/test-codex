@@ -53,6 +53,11 @@ case "$mode" in
       fi
     done
 
+    if find docs/reports -maxdepth 1 -type f \( -name 'template-*.md' -o -name '*_template-*.md' \) | grep -q .; then
+      echo "template-origin reports remain in docs/reports/"
+      exit 1
+    fi
+
     generated_forbidden_patterns=(
       "AI Coding Project Template"
       "GitHub Template として利用する前提"

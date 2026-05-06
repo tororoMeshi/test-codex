@@ -6,6 +6,7 @@
 - `AI_INSTRUCTIONS.md`
 - `.github/workflows/template-check.yml`
 - `scripts/check-template.sh`
+- `docs/project-intent.md`
 - `docs/ai-architecture-rules.md`
 - `docs/rust-coding-rules.md`
 - `docs/change-report-template.md`
