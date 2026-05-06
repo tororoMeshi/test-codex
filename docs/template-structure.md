@@ -7,6 +7,8 @@
 - `.github/workflows/template-check.yml`
 - `scripts/check-template.sh`
 - `docs/project-intent.md`
+- `docs/template-checklist.md`
+- `docs/template-structure.md`
 - `docs/ai-architecture-rules.md`
 - `docs/rust-coding-rules.md`
 - `docs/change-report-template.md`
@@ -14,4 +16,3 @@
 
 推奨追加:
 - `CONTRIBUTING.md`
-- `docs/template-checklist.md`

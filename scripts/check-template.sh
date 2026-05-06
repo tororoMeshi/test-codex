@@ -10,6 +10,8 @@ required_files=(
   ".github/workflows/template-check.yml"
   "scripts/check-template.sh"
   "docs/project-intent.md"
+  "docs/template-checklist.md"
+  "docs/template-structure.md"
   "docs/ai-architecture-rules.md"
   "docs/rust-coding-rules.md"
   "docs/change-report-template.md"
@@ -70,7 +72,18 @@ case "$mode" in
     )
 
     for pattern in "${generated_forbidden_patterns[@]}"; do
-      if git grep -n "$pattern" -- '*.md'; then
+      if [ -z "$pattern" ]; then
+        continue
+      fi
+
+      if find . \
+        -path './.git' -prune -o \
+        -path './node_modules' -prune -o \
+        -path './target' -prune -o \
+        -path './dist' -prune -o \
+        -path './build' -prune -o \
+        -type f -name '*.md' -print0 \
+        | xargs -0 grep -n -- "$pattern"; then
         echo "generated project still contains template text: $pattern"
         exit 1
       fi
