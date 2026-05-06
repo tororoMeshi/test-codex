@@ -16,7 +16,9 @@
 - [ ] README.md を実プロジェクトの説明に差し替えた
 - [ ] Markdown にテンプレート本体向けの説明が残っていない
 - [ ] Markdown に危険なプレースホルダー（例: `<project-name>`）が残っていない
-- [ ] `docs/template-checklist.md` と `docs/template-structure.md` を削除または実プロジェクト向けに置き換えた
+- [ ] `docs/template-checklist.md` を削除した
+- [ ] `docs/template-structure.md` を削除した
+- [ ] 実プロジェクト用に同種の文書が必要な場合は、`docs/project-checklist.md` や `docs/project-structure.md` など別名で作成した
 - [ ] テンプレート由来の `docs/reports/*.md` を削除し、`docs/reports/` 自体は残した
 - [ ] 派生プロジェクトとして公開する場合、LICENSE の著作権者を必要に応じて変更した
 

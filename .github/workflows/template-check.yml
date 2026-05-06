@@ -19,11 +19,25 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh api "repos/${GITHUB_REPOSITORY}" --jq '.is_template' | grep -qx 'true'; then
-            echo "CHECK_MODE=template" >> "$GITHUB_ENV"
-          else
-            echo "CHECK_MODE=generated" >> "$GITHUB_ENV"
-          fi
+          set -euo pipefail
+
+          is_template="$(gh api "repos/${GITHUB_REPOSITORY}" --jq '.is_template')" || {
+            echo "failed to detect repository template status"
+            exit 1
+          }
+
+          case "$is_template" in
+            true)
+              echo "CHECK_MODE=template" >> "$GITHUB_ENV"
+              ;;
+            false)
+              echo "CHECK_MODE=generated" >> "$GITHUB_ENV"
+              ;;
+            *)
+              echo "unexpected is_template value: $is_template"
+              exit 1
+              ;;
+          esac
 
       - name: Run template check
         run: bash scripts/check-template.sh "$CHECK_MODE"
