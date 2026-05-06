@@ -7,6 +7,7 @@ required_files=(
   "README.md"
   "AGENTS.md"
   "AI_INSTRUCTIONS.md"
+  "docs/project-intent.md"
   "docs/ai-architecture-rules.md"
   "docs/rust-coding-rules.md"
   "docs/change-report-template.md"

@@ -4,6 +4,7 @@
 - `README.md` が存在し、テンプレート利用方針への導線がある
 - `AGENTS.md` が存在し、`AI_INSTRUCTIONS.md` へ誘導している
 - `AI_INSTRUCTIONS.md` が存在し、共通ルールの実体として参照されている
+- `docs/project-intent.md` が存在し、プロジェクト目的・設計思想の要約として参照されている
 - `docs/ai-architecture-rules.md` が存在する
 - `docs/rust-coding-rules.md` が存在する
 - `docs/change-report-template.md` が存在する
@@ -18,6 +19,7 @@
 ## 自動チェック
 - [ ] テンプレート本体では `scripts/check-template.sh template` が成功する
 - [ ] 生成後プロジェクトでは `scripts/check-template.sh generated` が成功する
+- [ ] GitHub Actions では、テンプレート本体は `template`、生成後プロジェクトは `generated` として検査される
 
 ## 推奨
 - `CONTRIBUTING.md` にテンプレート更新の反映方針が記載されている

@@ -9,7 +9,14 @@ on:
 jobs:
   template-check:
     runs-on: ubuntu-latest
+    env:
+      TEMPLATE_SOURCE_REPOSITORY: tororoMeshi/test-codex
     steps:
       - uses: actions/checkout@v4
       - name: Run template check
-        run: bash scripts/check-template.sh
+        run: |
+          if [ "${GITHUB_REPOSITORY}" = "${TEMPLATE_SOURCE_REPOSITORY}" ]; then
+            bash scripts/check-template.sh template
+          else
+            bash scripts/check-template.sh generated
+          fi
