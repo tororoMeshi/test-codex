@@ -6,17 +6,24 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   template-check:
     runs-on: ubuntu-latest
-    env:
-      TEMPLATE_SOURCE_REPOSITORY: tororoMeshi/test-codex
     steps:
       - uses: actions/checkout@v4
-      - name: Run template check
+
+      - name: Detect check mode
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "${GITHUB_REPOSITORY}" = "${TEMPLATE_SOURCE_REPOSITORY}" ]; then
-            bash scripts/check-template.sh template
+          if gh api "repos/${GITHUB_REPOSITORY}" --jq '.is_template' | grep -qx 'true'; then
+            echo "CHECK_MODE=template" >> "$GITHUB_ENV"
           else
-            bash scripts/check-template.sh generated
+            echo "CHECK_MODE=generated" >> "$GITHUB_ENV"
           fi
+
+      - name: Run template check
+        run: bash scripts/check-template.sh "$CHECK_MODE"

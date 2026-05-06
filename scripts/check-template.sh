@@ -7,6 +7,8 @@ required_files=(
   "README.md"
   "AGENTS.md"
   "AI_INSTRUCTIONS.md"
+  ".github/workflows/template-check.yml"
+  "scripts/check-template.sh"
   "docs/project-intent.md"
   "docs/ai-architecture-rules.md"
   "docs/rust-coding-rules.md"
@@ -39,16 +41,32 @@ case "$mode" in
     fi
     ;;
   generated)
-    forbidden_patterns=(
+    template_only_files=(
+      "docs/template-checklist.md"
+      "docs/template-structure.md"
+    )
+
+    for file in "${template_only_files[@]}"; do
+      if [ -e "$file" ]; then
+        echo "template-only file remains in generated project: $file"
+        exit 1
+      fi
+    done
+
+    generated_forbidden_patterns=(
       "AI Coding Project Template"
-      "GitHub Template として利用する前提の雛形です"
+      "GitHub Template として利用する前提"
       "GitHub Template です"
+      "テンプレート本体"
+      "テンプレート利用チェックリスト"
+      "テンプレート構成"
+      "test-codex"
       "<project-name>"
     )
 
-    for pattern in "${forbidden_patterns[@]}"; do
-      if grep -q "$pattern" README.md; then
-        echo "README.md still contains template text: $pattern"
+    for pattern in "${generated_forbidden_patterns[@]}"; do
+      if git grep -n "$pattern" -- '*.md'; then
+        echo "generated project still contains template text: $pattern"
         exit 1
       fi
     done
